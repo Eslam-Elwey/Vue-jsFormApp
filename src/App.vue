@@ -1,17 +1,34 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <FormComp @Theme="handleThemeColor()" />
 </template>
 
+<script setup>
+// const bodyElem = document.body;
+
+function handleThemeColor() {
+  console.log("Theme");
+  let red = Math.floor((Math.random() * 1000) % 256);
+  let green = Math.floor((Math.random() * 1000) % 256);
+  let blue = Math.floor((Math.random() * 1000) % 256);
+
+  document.body.style.backgroundColor = `rgb(${red},${green},${blue})`;
+}
+
+// document.documentElement.addEventListener("keyup", function (e) {
+//   console.log(e.code);
+//   if (e.code === "Space") {
+//     handleThemeColor();
+//   }
+// });
+</script>
+
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import FormComp from "./components/FormComp.vue";
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  name: "App",
+  components: { FormComp },
+};
 </script>
 
 <style>
@@ -22,5 +39,11 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 </style>
